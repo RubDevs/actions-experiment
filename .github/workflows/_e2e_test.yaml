@@ -1,0 +1,22 @@
+#
+# Shared workflow that creates a new Docker image based on the current code base, tags it with the specified tag and pushes it to our private Docker repository
+#
+
+on:
+  workflow_dispatch:
+    inputs:
+      label:
+        description: 'Some label to display in the GitHub Actions UI'
+        type: string
+
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+    end-2-end:
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo "⚙️ Running E2E tests"
+          - run: echo "${{ github.event.inputs.label }}"
